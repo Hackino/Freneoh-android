@@ -1,0 +1,20 @@
+package com.futuneotech.freneoh.features.feature_article.domain.use_case
+
+import com.futuneotech.freneoh.core.data.utils.Resource
+import com.futuneotech.freneoh.features.feature_article.data.repository.ArticleRepositoryImpl
+import com.futuneotech.freneoh.features.feature_article.domain.model.Article
+import com.futuneotech.freneoh.features.feature_article.domain.repository.ArticleRepository
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+
+
+class GetArticles @Inject constructor(
+    private val repository: ArticleRepositoryImpl,
+) {
+    operator fun invoke(
+        period: Int ,
+        section: String
+    ): Flow<Resource<List<Article>>> {
+        return repository.getArticles(period,section)
+    }
+}
